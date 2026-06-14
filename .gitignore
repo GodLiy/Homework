@@ -1,0 +1,25 @@
+# === JMeter (工具 + 结果) ===
+apache-jmeter-5.6.3/
+jmeter.zip
+tests/jmeter_results.csv
+tests/jmeter_results.jtl
+jmeter.log
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# === IDE / Editor ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Docker ===
+sockshop/deploy/docker-compose/volumes/
+*.log
+
+# === OS ===
+Thumbs.db
+.DS_Store

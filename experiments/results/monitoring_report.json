@@ -1,0 +1,115 @@
+{
+  "title": "SockShop 微服务监控数据报告",
+  "timestamp": "2026-06-14 15:06:34",
+  "source": "Prometheus + Grafana",
+  "system": "SockShop (Docker Compose + K8s/Minikube)",
+  "services": {
+    "shipping": "1",
+    "orders": "1",
+    "queue-master": "1",
+    "frontend": "1",
+    "user": "1",
+    "cart": "1",
+    "catalogue": "1",
+    "payment": "1",
+    "node-exporter": "1"
+  },
+  "jvm_heap_memory_mb": {
+    "shipping": 71.0,
+    "orders": 75.7,
+    "cart": 77.8
+  },
+  "jvm_gc_count": {
+    "shipping": 0,
+    "orders": 0,
+    "cart": 0
+  },
+  "instance_uptime_hours": {
+    "shipping": 2467.6,
+    "orders": 2467.3,
+    "cart": 2468.5
+  },
+  "chaosmesh_experiments": [
+    "stresschaos.chaos-mesh.org/cpu-stress-carts    60s",
+    "stresschaos.chaos-mesh.org/cpu-stress-demo     30s",
+    "stresschaos.chaos-mesh.org/demo-fault-cpu      120s",
+    "stresschaos.chaos-mesh.org/monitor-demo-cpu    30s",
+    "stresschaos.chaos-mesh.org/perf-test-stress    30s",
+    "stresschaos.chaos-mesh.org/screenshot-stress   30s",
+    "stresschaos.chaos-mesh.org/verify-cpu-stress   30s",
+    "networkchaos.chaos-mesh.org/demo-fault-network     delay   120s",
+    "networkchaos.chaos-mesh.org/verify-network-delay   delay   30s",
+    "podchaos.chaos-mesh.org/pod-kill-carts   59m"
+  ],
+  "selenium_tests": [
+    {
+      "test": "Page Load: Homepage",
+      "status": "PASS",
+      "duration_sec": 0.336
+    },
+    {
+      "test": "Page Load: Login Page",
+      "status": "PASS",
+      "duration_sec": 0.067
+    },
+    {
+      "test": "Page Load: Register Page",
+      "status": "PASS",
+      "duration_sec": 0.02
+    },
+    {
+      "test": "Page Load: Catalogue",
+      "status": "PASS",
+      "duration_sec": 0.023
+    },
+    {
+      "test": "Page Load: Basket",
+      "status": "PASS",
+      "duration_sec": 0.092
+    },
+    {
+      "test": "Interaction: Find login form",
+      "status": "FAIL",
+      "duration_sec": 0.008,
+      "error": "Message: no such element: Unable to locate element: {\"method"
+    },
+    {
+      "test": "Interaction: Type username",
+      "status": "FAIL",
+      "duration_sec": 0.004,
+      "error": "Message: no such element: Unable to locate element: {\"method"
+    },
+    {
+      "test": "Interaction: Type password",
+      "status": "FAIL",
+      "duration_sec": 0.006,
+      "error": "Message: no such element: Unable to locate element: {\"method"
+    },
+    {
+      "test": "Interaction: Click login link",
+      "status": "PASS",
+      "duration_sec": 0.111
+    },
+    {
+      "test": "Interaction: Count nav links",
+      "status": "PASS",
+      "duration_sec": 0.0
+    },
+    {
+      "test": "Interaction: Get page title",
+      "status": "PASS",
+      "duration_sec": 0.005
+    },
+    {
+      "test": "Interaction: Find add-to-cart",
+      "status": "FAIL",
+      "duration_sec": 0.026,
+      "error": "Message: element not interactable\n  (Session info: chrome=14"
+    }
+  ],
+  "performance_concurrent": {
+    "50_concurrent_homepage": "535ms, 100% success",
+    "100_concurrent_normal": "1171ms, 85 req/s, 100% success",
+    "100_concurrent_fault": "1386ms, 72 req/s, 100% success"
+  }
+}

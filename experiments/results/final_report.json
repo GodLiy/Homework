@@ -1,0 +1,25 @@
+{
+  "dataset": {
+    "n_metrics": 30,
+    "n_timestamps": 500,
+    "n_root_cause": 3,
+    "incident": 400
+  },
+  "usad": {
+    "metrics": {
+      "precision": 0.5882352941176471,
+      "recall": 1.0,
+      "f1": 0.7407407407407407,
+      "tp": 100,
+      "fp": 70,
+      "fn": 0
+    }
+  },
+  "pattern_matcher": {
+    "AC@1": 1.0,
+    "AC@2": 0.5,
+    "AC@3": 0.3333333333333333,
+    "AC@5": 0.2,
+    "Avg@3": 0.611111111111111
+  }
+}

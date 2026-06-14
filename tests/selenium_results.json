@@ -1,0 +1,27 @@
+[
+  {
+    "test": "Homepage",
+    "status": "PASS",
+    "duration": 33.041
+  },
+  {
+    "test": "Login Page",
+    "status": "PASS",
+    "duration": 0.092
+  },
+  {
+    "test": "Register Page",
+    "status": "PASS",
+    "duration": 0.032
+  },
+  {
+    "test": "Catalogue",
+    "status": "PASS",
+    "duration": 0.033
+  },
+  {
+    "test": "Basket",
+    "status": "PASS",
+    "duration": 0.127
+  }
+]

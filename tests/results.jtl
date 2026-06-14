@@ -1,0 +1,6 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1781423391803,39,GET Homepage,200,OK,Homepage - 3 Users x2 1-1,text,true,,9011,116,1,1,http://localhost:8088/,36,0,17
+1781423391843,13,GET Homepage,200,OK,Homepage - 3 Users x2 1-1,text,true,,9011,116,1,1,http://localhost:8088/,13,0,0
+1781423391857,11,GET Homepage,200,OK,Homepage - 3 Users x2 1-1,text,true,,9011,116,1,1,http://localhost:8088/,11,0,0
+1781423391869,13,GET Homepage,200,OK,Homepage - 3 Users x2 1-1,text,true,,9011,116,1,1,http://localhost:8088/,12,0,0
+1781423391882,12,GET Homepage,200,OK,Homepage - 3 Users x2 1-1,text,true,,9011,116,1,1,http://localhost:8088/,12,0,0

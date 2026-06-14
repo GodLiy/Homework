@@ -1,0 +1,152 @@
+{
+  "title": "SockShop 性能指标数据 + 论文算法复现报告",
+  "timestamp": "2026-06-14 15:08:35",
+  "source": "Prometheus on SockShop (Docker Compose + K8s/Minikube)",
+  "cpu_jvm": {
+    "loaded_classes": {
+      "shipping": "7433",
+      "orders": "8100",
+      "cart": "8347"
+    },
+    "threads": {
+      "shipping": "21",
+      "orders": "23",
+      "cart": "23"
+    },
+    "cpu_time_ms": {
+      "shipping": "70.83",
+      "orders": "73.3",
+      "frontend": "13.401916000000005",
+      "user": "3.97",
+      "cart": "74.84",
+      "catalogue": "3.81",
+      "payment": "2.98",
+      "node-exporter": "22.6"
+    }
+  },
+  "memory": {
+    "heap_used_mb": {
+      "shipping": 58.9,
+      "orders": 97.4,
+      "cart": 94.5
+    },
+    "heap_max_mb": {
+      "shipping": 128.0,
+      "orders": 128.0,
+      "cart": 128.0
+    },
+    "heap_committed_mb": {
+      "shipping": 128.0,
+      "orders": 128.0,
+      "cart": 128.0
+    }
+  },
+  "gc": {
+    "gc_time_rate": {
+      "shipping": 0.0,
+      "orders": 0.0,
+      "cart": 0.0
+    }
+  },
+  "request_metrics": {
+    "cart_response_gauge": {
+      "cart": "3"
+    },
+    "metrics_response_gauge": {
+      "shipping": "1",
+      "orders": "1",
+      "cart": "1"
+    }
+  },
+  "concurrent_performance": {
+    "50_homepage": "535ms, 100%",
+    "100_api_normal": "1171ms, 85 req/s, 100%",
+    "100_api_fault": "1386ms, 72 req/s, 100%"
+  },
+  "page_load_times": {
+    "Page Load: Homepage": "0.336s (PASS)",
+    "Page Load: Login Page": "0.067s (PASS)",
+    "Page Load: Register Page": "0.02s (PASS)",
+    "Page Load: Catalogue": "0.023s (PASS)",
+    "Page Load: Basket": "0.092s (PASS)",
+    "Interaction: Find login form": "0.008s (FAIL)",
+    "Interaction: Type username": "0.004s (FAIL)",
+    "Interaction: Type password": "0.006s (FAIL)",
+    "Interaction: Click login link": "0.111s (PASS)",
+    "Interaction: Count nav links": "0.0s (PASS)",
+    "Interaction: Get page title": "0.005s (PASS)",
+    "Interaction: Find add-to-cart": "0.026s (FAIL)"
+  },
+  "usad_results": {
+    "architecture": "Encoder(300->150->75->30) + 2xDecoder, Adversarial Training",
+    "best_params": {
+      "window_size": 10,
+      "latent_size": 30,
+      "epochs": 80,
+      "downsample": 5
+    },
+    "performance": {
+      "precision": 0.826,
+      "recall": 0.95,
+      "f1_score": 0.884,
+      "training_time": "~3 seconds / 80 epochs",
+      "key_feature": "Single model supports multiple sensitivity levels (alpha/beta tuning)"
+    }
+  },
+  "pattern_matcher_results": {
+    "architecture": "KS-test + 1-D CNN Pattern Classifier + Weighted Ranking",
+    "performance": {
+      "AC@1": 1.0,
+      "Avg@3": 0.61,
+      "filter_rate": "90%+",
+      "execution_time": "0.106s",
+      "patterns_detected": [
+        "sudden_increase",
+        "steady_increase",
+        "multiple_spikes",
+        "level_shift",
+        "fluctuations"
+      ]
+    }
+  },
+  "optimization_suggestions": [
+    {
+      "area": "USAD 模型精度",
+      "issue": "合成数据异常模式过于简单，F1=0.88 有提升空间",
+      "suggestions": [
+        "使用 Prometheus 实时采集的真实 SockShop 数据替代合成数据",
+        "增加训练轮数 (80→150)，使用学习率衰减",
+        "增加窗口大小 (10→20) 捕获更长时序依赖",
+        "引入 point-adjust 评估方法 (论文推荐)"
+      ]
+    },
+    {
+      "area": "PatternMatcher 模式分类",
+      "issue": "基于特征工程规则分类器简化了原论文的 1-D CNN",
+      "suggestions": [
+        "实现完整的 1-D CNN (3 Conv + 2 FC) 替代规则分类器",
+        "使用 ChaosMesh 注入故障生成真实标注数据用于训练",
+        "增加 Data Augmentation (reverse/shift/noise) 提升鲁棒性",
+        "支持工程师自定义模式权重配置"
+      ]
+    },
+    {
+      "area": "计算效率",
+      "issue": "当前在 CPU 上运行，大批量数据下可优化",
+      "suggestions": [
+        "USAD 批大小从 64 增加到 128，利用 GPU 加速",
+        "PatternMatcher KS-test 可并行化处理多指标",
+        "使用模型量化 (FP16/INT8) 减小推理延迟"
+      ]
+    },
+    {
+      "area": "数据采集",
+      "issue": "SockShop 仅暴露 JVM 指标，缺少容器级 CPU/内存",
+      "suggestions": [
+        "部署 cAdvisor 或 node-exporter 采集容器级指标",
+        "配置 JMX Exporter 采集更细粒度的 Java 应用指标",
+        "接入 SkyWalking/Jaeger 进行分布式追踪"
+      ]
+    }
+  ]
+}

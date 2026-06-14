@@ -1,0 +1,66 @@
+[
+  {
+    "test": "Page Load: Homepage",
+    "status": "PASS",
+    "duration_sec": 0.336
+  },
+  {
+    "test": "Page Load: Login Page",
+    "status": "PASS",
+    "duration_sec": 0.067
+  },
+  {
+    "test": "Page Load: Register Page",
+    "status": "PASS",
+    "duration_sec": 0.02
+  },
+  {
+    "test": "Page Load: Catalogue",
+    "status": "PASS",
+    "duration_sec": 0.023
+  },
+  {
+    "test": "Page Load: Basket",
+    "status": "PASS",
+    "duration_sec": 0.092
+  },
+  {
+    "test": "Interaction: Find login form",
+    "status": "FAIL",
+    "duration_sec": 0.008,
+    "error": "Message: no such element: Unable to locate element: {\"method"
+  },
+  {
+    "test": "Interaction: Type username",
+    "status": "FAIL",
+    "duration_sec": 0.004,
+    "error": "Message: no such element: Unable to locate element: {\"method"
+  },
+  {
+    "test": "Interaction: Type password",
+    "status": "FAIL",
+    "duration_sec": 0.006,
+    "error": "Message: no such element: Unable to locate element: {\"method"
+  },
+  {
+    "test": "Interaction: Click login link",
+    "status": "PASS",
+    "duration_sec": 0.111
+  },
+  {
+    "test": "Interaction: Count nav links",
+    "status": "PASS",
+    "duration_sec": 0.0
+  },
+  {
+    "test": "Interaction: Get page title",
+    "status": "PASS",
+    "duration_sec": 0.005
+  },
+  {
+    "test": "Interaction: Find add-to-cart",
+    "status": "FAIL",
+    "duration_sec": 0.026,
+    "error": "Message: element not interactable\n  (Session info: chrome=14"
+  }
+]
