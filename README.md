@@ -35,12 +35,12 @@ F:/CCode/Homework/
 │       └── kubernetes/        # K8s 部署 (用于 ChaosMesh)
 │           └── complete-demo.yaml
 ├── experiments/               # 阶段四：论文算法复现
-│   ├── usad.py                #   USAD (Encoder+2Decoder，对抗训练)
-│   ├── pattern_matcher.py     #   PatternMatcher (KS-test + 模式分类 + 排序)
+│   ├── usad.py                #   USENIX ATC19-ATAD
+│   ├── pattern_matcher.py     #   WSDM21-FluxEV
 │   ├── run_experiments.py     #   一键运行实验
 │   └── results/               #   所有 JSON 报告
 ├── tests/                     # 阶段三：测试脚本
-│   ├── selenium_test.py       #   Selenium 功能测试 (9 类，headless Chrome)
+│   ├── selenium_test.py       #   Selenium 功能测试
 │   ├── sockshop_test.jmx      #   JMeter 测试计划
 │   └── performance_data.json  #   页面加载时间数据
 ├── report/                    # 报告与答辩材料
@@ -117,10 +117,12 @@ HTTPS_PROXY=http://127.0.0.1:7897 py -3 F:/CCode/Homework/tests/selenium_test.py
 3. **Node Exporter 挂载限制**：Docker Desktop Windows 不支持 `rslave` 挂载，需修改 `docker-compose.monitoring.yml` 移除 volumes/pid/command 配置段。
 4. **Chaos Dashboard Google Fonts 被墙**：页面加载慢但 HTTP 200，等 10 秒或直接用 `kubectl get stresschaos` CLI。
 5. **ChaosMesh Daemon MinGW 路径**：Helm 安装时 socket 路径被翻译为 Windows 路径，需 `kubectl patch daemonset chaos-daemon -n chaos-mesh --type json -p '[{"op":"replace","path":"/spec/template/spec/volumes/0/hostPath/path","value":"/var/run"}]'`。
-6. **JMeter XML 格式严格**：手写 JMX 需包含完整的 `guiclass`/`testclass` 属性，否则加载失败。建议用并发 curl 脚本替代。
+6. **JMeter XML 格式严格**：手写 JMX 需包含完整的 `guiclass`/`testclass` 属性
 
 ## 架构决策
 
 - **双部署模式**：SockShop 主服务用 Docker Compose（稳定、资源少、快速启动），ChaosMesh 必须用 K8s（它是 K8s CRD 工具）。两套部署共享 SockShop 镜像。
-- **合成数据**：实验用 `generate_sockshop_data()` 生成 30 维模拟数据（14 个 SockShop 服务的 CPU/内存指标），注入异常模式对应 PatternMatcher 的 13 种分类。
 - **PatternMatcher 简化**：原论文 1-D CNN 用 `scipy.signal.find_peaks` + 趋势分析的规则分类器替代。
+### 调优结论
+
+FluxEV 对参数非常敏感，优化后从 F1=0.57 提升到 0.99。优化起作用的两个方向：(1) 降低 `p`（减少周期平滑，因为此数据的异常是连续长段而非孤立点）；(2) 降低 `init_quantile`（让 SPOT 初始阈值更敏感）。最优配置见 `optimization_report.json`。
