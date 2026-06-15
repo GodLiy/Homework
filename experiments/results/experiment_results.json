@@ -1,0 +1,130 @@
+{
+  "timestamp": "2026-06-15 00:39:03",
+  "dataset": {
+    "source_points": 2156,
+    "target_points": 2157,
+    "period": 1437,
+    "anomaly_ratio_source": 0.5533395176252319,
+    "anomaly_ratio_target": 0.5558646267964766
+  },
+  "point_level": {
+    "FluxEV": {
+      "precision": 0.8571428571428571,
+      "recall": 0.0050041701417848205,
+      "f1_score": 0.009950248756218907,
+      "accuracy": 0.44645340751043117,
+      "specificity": 0.9989561586638831,
+      "tp": 6,
+      "fp": 1,
+      "fn": 1193,
+      "tn": 957,
+      "true_segments": 5,
+      "pred_segments": 4,
+      "detected_segments": 2
+    },
+    "ATAD": {
+      "precision": 0.5769230769230769,
+      "recall": 0.025020850708924104,
+      "f1_score": 0.047961630695443645,
+      "accuracy": 0.4478442280945758,
+      "specificity": 0.9770354906054279,
+      "tp": 30,
+      "fp": 22,
+      "fn": 1169,
+      "tn": 936,
+      "true_segments": 5,
+      "pred_segments": 52,
+      "detected_segments": 5
+    },
+    "K-Sigma": {
+      "precision": 1.0,
+      "recall": 0.004170141784820684,
+      "f1_score": 0.00830564784053156,
+      "accuracy": 0.44645340751043117,
+      "specificity": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1194,
+      "tn": 958,
+      "true_segments": 5,
+      "pred_segments": 1,
+      "detected_segments": 1
+    },
+    "IQR": {
+      "precision": 0.7035294117647058,
+      "recall": 0.2493744787322769,
+      "f1_score": 0.36822660098522164,
+      "accuracy": 0.5243393602225312,
+      "specificity": 0.8684759916492694,
+      "tp": 299,
+      "fp": 126,
+      "fn": 900,
+      "tn": 832,
+      "true_segments": 5,
+      "pred_segments": 227,
+      "detected_segments": 5
+    }
+  },
+  "segment_level": {
+    "FluxEV": {
+      "precision": 0.9979166666666667,
+      "recall": 0.3994995829858215,
+      "f1_score": 0.570577724836212,
+      "accuracy": 0.6657394529439036,
+      "specificity": 0.9989561586638831,
+      "tp": 479,
+      "fp": 1,
+      "fn": 720,
+      "tn": 957,
+      "true_segments": 5,
+      "pred_segments": 4,
+      "detected_segments": 2
+    },
+    "ATAD": {
+      "precision": 0.9819819819819819,
+      "recall": 1.0,
+      "f1_score": 0.9909090909090909,
+      "accuracy": 0.989800649049606,
+      "specificity": 0.9770354906054279,
+      "tp": 1199,
+      "fp": 22,
+      "fn": 0,
+      "tn": 936,
+      "true_segments": 5,
+      "pred_segments": 52,
+      "detected_segments": 5
+    },
+    "K-Sigma": {
+      "precision": 1.0,
+      "recall": 0.1993327773144287,
+      "f1_score": 0.33240611961057026,
+      "accuracy": 0.5549374130737135,
+      "specificity": 1.0,
+      "tp": 239,
+      "fp": 0,
+      "fn": 960,
+      "tn": 958,
+      "true_segments": 5,
+      "pred_segments": 1,
+      "detected_segments": 1
+    },
+    "IQR": {
+      "precision": 0.9049056603773585,
+      "recall": 1.0,
+      "f1_score": 0.9500792393026942,
+      "accuracy": 0.9415855354659249,
+      "specificity": 0.8684759916492694,
+      "tp": 1199,
+      "fp": 126,
+      "fn": 0,
+      "tn": 832,
+      "true_segments": 5,
+      "pred_segments": 227,
+      "detected_segments": 5
+    }
+  },
+  "runtime": {
+    "FluxEV_seconds": 15.506690263748169,
+    "ATAD_seconds": 8.943829536437988
+  }
+}
