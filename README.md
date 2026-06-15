@@ -35,17 +35,21 @@ F:/CCode/Homework/
 │       └── kubernetes/        # K8s 部署 (用于 ChaosMesh)
 │           └── complete-demo.yaml
 ├── experiments/               # 阶段四：论文算法复现
-│   ├── usad.py                #   USENIX ATC19-ATAD
-│   ├── pattern_matcher.py     #   WSDM21-FluxEV
-│   ├── run_experiments.py     #   一键运行实验
-│   └── results/               #   所有 JSON 报告
+│   ├── atad.py                #   USENIX ATC19-ATAD
+│   ├── fluxev.py     #   WSDM21-FluxEV
+│   ├── main.py     #   主实验脚本：运行 FluxEV、ATAD、K-Sigma、IQR 对比实验
+│   └── results/    #   所有 JSON 报告
+|   ├── data_loader.py     # 数据加载、训练/测试集划分、周期性检测、归一化
+|   ├── atad_features.py #  ATAD 算法所需的特征工程模块   
+|   ├── evaluate.py # 评估指标计算、结果可视化、对比表格生成
+|   ├── optimize.py  # FluxEV / SR 参数自动调优
+|   ├── sr_detector.py # 谱残差 (Spectral Residual) 异常检测方法   
 ├── tests/                     # 阶段三：测试脚本
 │   ├── selenium_test.py       #   Selenium 功能测试
 │   ├── sockshop_test.jmx      #   JMeter 测试计划
 │   └── performance_data.json  #   页面加载时间数据
-├── report/                    # 报告与答辩材料
-├── KDD20-USAD.pdf             # 论文1
-└── ISSRE21-PatternMatcher.pdf # 论文2
+├── USENIX ATC19-ATAD.pdf             # 论文1
+└── WSDM21-FluxEV.pdf # 论文2
 ```
 
 ## 服务访问地址
